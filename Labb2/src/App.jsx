@@ -22,9 +22,16 @@ function App() {
 
   return (
     <>
-        <Button variant="outline-danger" onClick={() => setExist(e => !e)}>
-            Remove everything
-        </Button>
+        {
+            exist ?
+            <Button variant="outline-success" onClick={() => setExist(e => !e)}>
+                Show everything
+            </Button>
+            :
+            <Button variant="outline-danger" onClick={() => setExist(e => !e)}>
+                Remove everything
+            </Button>
+        }
         <br />
         <br />
         <div style={handleColor()}>

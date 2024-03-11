@@ -1,50 +1,70 @@
 import { useCallback, useState } from 'react'
-import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button'
 
 import './App.css'
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
+import DogHeading from './components/DogHeading'
 import DogPicture from './components/DogPicture'
 import DogFacts from './components/DogFacts'
-import SetCopyrightDate from './components/CopyrightDate'
-import DogHeading from './components/DogHeading'
+import CopyrightDate from './components/CopyrightDate'
 
 function App() {
+    const [exist, setExist] = useState(true)
 
-    const [exist, setExist] = useState(false);
+    const welcome = () => {
+        return (
+            <>
+                <h1> Welcome to my dog page </h1>
+                <br />
+                <h3> Press the button to show the dog page </h3>
+                <br />
+                <br />
+            </>
+        )
+    }
 
-    const handleColor = useCallback(() => {
-        const styleBak = {
+    const handleButton = useCallback(() => {
+        const showOrHide = {
             display: exist ? 'none' : ''
         }
-        return styleBak;
-      }, [exist]);
+        return showOrHide
+    }, [exist])
 
-  return (
-    <>
-        {
-            exist ?
-            <Button variant="outline-success" onClick={() => setExist(e => !e)}>
-                Show everything
-            </Button>
-            :
-            <Button variant="outline-danger" onClick={() => setExist(e => !e)}>
-                Remove everything
-            </Button>
-        }
-        <br />
-        <br />
-        <div style={handleColor()}>
-            <DogHeading />
-            <DogPicture />
+    return (
+        <>
+            {exist ? (
+                <>
+                    {welcome()}
+                    <Button
+                        variant="outline-success"
+                        size="lg"
+                        onClick={() => setExist((e) => !e)}
+                    >
+                        Show
+                    </Button>
+                </>
+            ) : (
+                <Button
+                    variant="outline-danger"
+                    onClick={() => setExist((e) => !e)}
+                >
+                    Hide
+                </Button>
+            )}
             <br />
             <br />
-            <DogFacts />
-            <br />
-            <SetCopyrightDate />
-        </div>
-    </>
-  )
+            <div style={handleButton()}>
+                <DogHeading />
+                <DogPicture />
+                <br />
+                <br />
+                <DogFacts />
+                <br />
+                <CopyrightDate />
+            </div>
+        </>
+    )
 }
 
 export default App

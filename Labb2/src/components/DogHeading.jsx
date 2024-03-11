@@ -6,15 +6,17 @@ function DogHeading() {
     `
 
     const SetDogHeading = () => {
-      return (
-        <>
-          <h1><Orange> Dog </Orange></h1>
-          <br />
-        </>
-      );
-    };
+        return (
+            <>
+                <h1>
+                    <Orange> Dog </Orange>
+                </h1>
+                <br />
+            </>
+        )
+    }
 
-    return <>{SetDogHeading()}</>;
-  }
+    return <>{SetDogHeading()}</>
+}
 
-  export default DogHeading;
+export default DogHeading

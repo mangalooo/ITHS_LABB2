@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useMemo, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 
 import './App.css'
@@ -24,7 +24,7 @@ function App() {
         )
     }
 
-    const handleButton = useCallback(() => {
+    const handleButton = useMemo(() => {
         const showOrHide = {
             display: exist ? 'none' : ''
         }
@@ -54,7 +54,7 @@ function App() {
             )}
             <br />
             <br />
-            <div style={handleButton()}>
+            <div style={handleButton}>
                 <DogHeading />
                 <DogPicture />
                 <br />

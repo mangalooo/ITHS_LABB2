@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useCallback } from 'react'
 import { format } from 'date-fns'
 
 function CopyrightDate() {
@@ -21,7 +21,7 @@ function CopyrightDate() {
         setDate(todaysDate)
     }
 
-    const checkDate = useMemo(() => {
+    const checkDate = useCallback(() => {
         return SetCopyrightDate(date)
     }, [date])
 
